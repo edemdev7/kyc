@@ -3,4 +3,6 @@
 /home/edemdev/Gara/kyc/src/main/java/com/paykko/kyc/model/dto/KycStatusDTO.java
 /home/edemdev/Gara/kyc/src/main/java/com/paykko/kyc/model/enums/Status.java
 /home/edemdev/Gara/kyc/src/main/java/com/paykko/kyc/repository/KycStatusRepository.java
+/home/edemdev/Gara/kyc/src/main/java/com/paykko/kyc/services/KycStatusService.java
 /home/edemdev/Gara/kyc/src/main/java/com/paykko/kyc/web/controller/DiagnosticController.java
+/home/edemdev/Gara/kyc/src/main/java/com/paykko/kyc/web/controller/KycController.java

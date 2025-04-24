@@ -72,3 +72,9 @@ Le Lambda est écrit en Java (avec AWS SDK). Il effectue 3 grandes étapes :
 
 ---
 
+Dans l'architecture:
+
+Controller → Reçoit les requêtes HTTP
+Service → Contient la logique métier
+Repository → Accède à la base de données
+Entity → Représente une table dans la base de données

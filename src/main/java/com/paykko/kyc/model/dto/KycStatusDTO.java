@@ -12,4 +12,16 @@ public class KycStatusDTO {
     private String userId;
     private Status status;
     private String reason;
+
+    public void setUserId(String userId) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void setStatus(Status status) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void setReason(String reason) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
