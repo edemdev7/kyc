@@ -1,4 +1,5 @@
 com/paykko/kyc/KycApplication.class
 com/paykko/kyc/model/KycStatus$Status.class
+com/paykko/kyc/web/controller/DiagnosticController.class
 com/paykko/kyc/repository/KycStatusRepository.class
 com/paykko/kyc/model/KycStatus.class
