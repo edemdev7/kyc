@@ -35,6 +35,38 @@ public class KycStatus {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
     
     public enum Status {
         PENDING, VALIDATED, REJECTED

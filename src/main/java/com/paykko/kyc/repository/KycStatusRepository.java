@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface KycStatusRepository extends JpaRepository<KycStatus, String> {
+    KycStatus findByUserId(String userId);
+
 }
