@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import com.paykko.kyc.model.enums.Status;
 import java.time.LocalDateTime;
 
 @Data
@@ -36,12 +38,20 @@ public class KycStatus {
         updatedAt = LocalDateTime.now();
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public String getUserId() {
         return userId;
     }
 
-    public Status getStatus() {
-        return status;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getReason() {
@@ -66,9 +76,5 @@ public class KycStatus {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
-    }
-    
-    public enum Status {
-        PENDING, VALIDATED, REJECTED
     }
 }
