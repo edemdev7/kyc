@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class KycStatusDTO {
-    private String userId;
+    private String memberId;
     private Status status;
     private String reason;
 }

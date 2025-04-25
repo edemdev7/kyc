@@ -4,77 +4,35 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import com.paykko.kyc.model.enums.Status;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "kyc_status")
 public class KycStatus {
-    
     @Id
-    private String userId;
-    
+    private String memberId;
     @Enumerated(EnumType.STRING)
     private Status status;
-    
     private String reason;
-    
-    private LocalDateTime createdAt;
-    
-    private LocalDateTime updatedAt;
-    
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
-    
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+    private Date createdAt;
+    private Date updatedAt;
+    private int numberOfChecks;
+
+    /**
+     * Constructs a new KycStatus instance with the given member ID.
+     * Initializes the status to PENDING, sets the createdAt timestamp to the current date,
+     * and sets the initial number of checks to 1.
+     *
+     * @param memberId the unique identifier of the member for which the KYC status is being created
+     */
+    public KycStatus(String memberId) {
+        this.memberId = memberId;
+        this.status = Status.PENDING;
+        this.createdAt = new Date();
+        this.numberOfChecks = 1;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

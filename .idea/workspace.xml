@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7b5f389-5409-41c9-8d96-25ea0e07f4e9" name="Changes" comment="update" />
+    <list default="true" id="e7b5f389-5409-41c9-8d96-25ea0e07f4e9" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/KycStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/KycStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/dto/KycStatusDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/dto/KycStatusDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/enums/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/repository/KycStatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/repository/KycStatusRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/dto/KycStatusDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/dto/KycStatusDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/services/KycStatusService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/services/KycStatusService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/web/controller/KycController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/web/controller/KycController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,21 +24,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "edemdev7"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;edemdev7&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/edemdev7/kyc.git",
-    "accountId": "71d95fb9-a2d1-4c3f-b42b-fc05fc0d40c8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/edemdev7/kyc.git&quot;,
+    &quot;accountId&quot;: &quot;71d95fb9-a2d1-4c3f-b42b-fc05fc0d40c8&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2wB3FXowTbZpakWOKzM2rtAIt2c" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,10 +50,23 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/edemdev/Gara/kyc",
+    "last_opened_file_path": "/home/edemdev/Gara/paykko-kyc",
     "settings.editor.selected.configurable": "ml.llm.LLMConfigurable"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="paykko-kyc" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="paykko-kyc" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e7b5f389-5409-41c9-8d96-25ea0e07f4e9" name="Changes" comment="" />
