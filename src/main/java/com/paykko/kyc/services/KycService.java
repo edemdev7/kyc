@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +18,11 @@ public class KycService {
     private final KycStatusRepository kycStatusRepository;
     private final AmazonS3 amazonS3;
     private static final String BUCKET_NAME = "kyc-uploads-bucket";
+
+    public KycService() {
+        this.kycStatusRepository = null;
+        this.amazonS3 = null;
+    }
 
     /**
      * Soumet des documents pour vérification KYC
@@ -71,6 +75,7 @@ public class KycService {
         return convertToDTO(status);
     }
 
+    @SuppressWarnings("UseSpecificCatch")
     private void uploadToS3(String memberId, MultipartFile file, String fileName) {
         try {
             String key = String.format("%s/%s", memberId, fileName);
