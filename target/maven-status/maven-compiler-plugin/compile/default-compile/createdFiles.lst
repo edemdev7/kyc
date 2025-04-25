@@ -1,8 +1,8 @@
+application.properties
 com/paykko/kyc/KycApplication.class
 com/paykko/kyc/model/dto/KycStatusDTO.class
 com/paykko/kyc/model/KycStatus.class
 com/paykko/kyc/model/enums/Status.class
-com/paykko/kyc/services/KycStatusService.class
-com/paykko/kyc/web/controller/KycController.class
 com/paykko/kyc/web/controller/DiagnosticController.class
 com/paykko/kyc/repository/KycStatusRepository.class
+com/paykko/kyc/services/KycService.class

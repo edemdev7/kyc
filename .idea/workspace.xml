@@ -6,20 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="e7b5f389-5409-41c9-8d96-25ea0e07f4e9" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/KycStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/KycStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/dto/KycStatusDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/dto/KycStatusDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/model/enums/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/repository/KycStatusRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/repository/KycStatusRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/dto/KycStatusDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/dto/KycStatusDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/services/KycStatusService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/services/KycStatusService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/web/controller/KycController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/web/controller/KycController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,7 +52,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/edemdev/Gara/paykko-kyc",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
   }
 }]]></component>
   <component name="RunManager">
@@ -108,5 +109,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/KycService.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
