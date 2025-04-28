@@ -19,9 +19,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7b5f389-5409-41c9-8d96-25ea0e07f4e9" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/AWSTextractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/AWSTextractService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/impl/AWSRekognitionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/impl/AWSRekognitionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/impl/AWSTextractServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/impl/AWSTextractServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
