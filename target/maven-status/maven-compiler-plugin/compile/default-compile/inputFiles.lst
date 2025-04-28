@@ -1,4 +1,5 @@
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/KycApplication.java
+/home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/common/exception/GlobalExceptionHandler.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/common/exception/KycNotFoundException.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/common/exception/KycVerificationException.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/config/AWSConfig.java
@@ -6,6 +7,7 @@
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/model/KycVerificationResult.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/model/dto/KycStatusDTO.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/model/dto/KycSubmissionDTO.java
+/home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/model/dto/response/KycSubmissionResponseDTO.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/model/enums/Status.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/repository/KycStatusRepository.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/services/AWSRekognitionService.java
@@ -14,3 +16,4 @@
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/services/impl/AWSRekognitionServiceImpl.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/services/impl/AWSTextractServiceImpl.java
 /home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/web/controller/DiagnosticController.java
+/home/edemdev/Gara/paykko-kyc/src/main/java/com/paykko/kyc/web/controller/KycController.java
