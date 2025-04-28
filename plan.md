@@ -1,80 +1,70 @@
-
-### 🎯 Objectif :
-Créer un microservice en Java pour gérer le processus KYC (Know Your Customer) en exploitant des services AWS (S3, Lambda, Textract, Rekognition, DynamoDB).
+Voici la **description textuelle** de ton **nouveau diagramme de séquence** (avec envoi direct vers S3) :
 
 ---
 
-## 🔌 **Endpoints API exposés**
-
-### `POST /kyc/submit`
-- 📤 **Entrée** : 
-  - `photo_id`: image de la pièce d’identité
-  - `selfie`: photo de l’utilisateur
-  - `user_id`: identifiant de l’utilisateur
-- 📁 Upload des fichiers vers un bucket S3 (`kyc-uploads-bucket`), dossier spécifique par `user_id`
-
-### `GET /kyc/status/{user_id}`
-- 📥 **Retourne** :
-  ```json
-  {
-    "user_id": "12345",
-    "status": "VALIDATED",
-    "reason": null
-  }
-  ```
-- Va lire dans **DynamoDB** le statut de l'utilisateur.
+### Acteurs :
+- **Client (App Mobile / Web)**
+- **AWS S3**
+- **KYC Backend**
+- **AWS Rekognition**
+- **Database (PostgreSQL)**
 
 ---
 
-## ⚙️ **Traitement backend déclenché automatiquement**
+### Flow détaillé :
 
-### 📦 AWS S3 (Trigger)
-- Lorsqu’un utilisateur envoie ses images, elles sont stockées dans `s3://kyc-uploads-bucket/{user_id}/photo_id.jpg` et `selfie.jpg`.
-- Le dépôt déclenche un **AWS Lambda** via **S3 Event Notification**.
+1. **Client → AWS S3** :
+    - Upload direct de :
+        - photo d'identité (`photo_id`)
+        - selfie (`photo_selfie`)
+    - S3 retourne les **URLs publiques/privées**.
+
+2. **Client → KYC Backend (POST /kyc/submit)** :
+    - Envoi d'une requête `POST` contenant :
+        - `photo_id_url`
+        - `photo_selfie_url`
+        - (optionnel) **Données déclarées** : `nom`, `prénom`, `sexe`, `date de naissance`
+
+3. **KYC Backend → AWS Rekognition (CompareFaces)** :
+    - Appel du service Rekognition pour comparer la `photo_id_url` et la `photo_selfie_url`.
+    - Rekognition retourne :
+        - Similarité (score de correspondance)
+        - Détails éventuels (bounding box, landmarks).
+
+4. **KYC Backend → AWS Rekognition (Textract ou DetectText)** :
+    - Extraction de texte sur `photo_id_url` pour obtenir :
+        - **Nom**
+        - **Prénom**
+        - **Sexe**
+        - **Date de naissance**
+        - (et potentiellement autres infos comme numéro de document)
+
+5. **KYC Backend → Traitement interne** :
+    - Comparaison entre les **données extraites** de la pièce et les **données déclarées** par l’utilisateur (nom, prénom, sexe, date de naissance).
+    - Calcul de:
+        - Score de **validation faciale**.
+        - Score de **validation textuelle**.
+
+6. **KYC Backend → Database (PostgreSQL)** :
+    - Sauvegarde des résultats :
+        - URLs des images
+        - Résultats de comparaison faciale
+        - Résultats de comparaison des données textuelles
+        - Statut (`PENDING`, `VALIDATED`, `REJECTED`)
+        - Logs / historique d’erreurs éventuelles
+
+7. **Client → KYC Backend (GET /kyc/status/{id})** :
+    - Le client peut récupérer à tout moment l’état (`status`) de son KYC avec un `id`.
+    - La réponse contient :
+        - Statut global
+        - Résultats détaillés (si besoin)
 
 ---
 
-## 🧠 **AWS Lambda – Analyse KYC**
-Le Lambda est écrit en Java (avec AWS SDK). Il effectue 3 grandes étapes :
+### Résumé des endpoints exposés :
 
-1. **Extraction texte via Textract**
-   - Lit l'image de la **pièce d'identité** (photo_id).
-   - Récupère :
-     - Nom
-     - Prénom
-     - Date de naissance
-     - Numéro du document
-   - Vérifie que les informations sont lisibles.
+| Méthode | Endpoint               | Description                        |
+|--------|-------------------------|------------------------------------|
+| POST   | `/kyc/submit`             | Envoyer URLs + infos pour traitement KYC |
+| GET    | `/kyc/status/{id}`        | Récupérer le statut du traitement  |
 
-2. **Détection visage**
-   - Utilise **AWS Rekognition** pour détecter le visage dans la pièce d’identité.
-   - Extrait le visage détecté de `photo_id.jpg`.
-
-3. **Comparaison Selfie vs Document**
-   - Utilise `CompareFaces` de Rekognition pour comparer le selfie avec le visage extrait du document.
-   - Seuil de confiance typique : ≥ 90%.
-
----
-
-## 🗃️ **Résultat stocké dans DynamoDB**
-
-- Table : `kyc_status`
-- Colonnes :
-  - `user_id`
-  - `status`: `PENDING`, `VALIDATED`, `REJECTED`
-  - `reason`: erreurs éventuelles (e.g. "Textract failed", "Face mismatch")
-  - `created_at`, `updated_at`
-
----
-
-## 🔔 **Notification (optionnelle)**
-- Si besoin, notification envoyée via **Amazon SNS** ou appel vers un webhook interne (API Gateway) pour signaler la fin du traitement à d'autres services.
-
----
-
-Dans l'architecture:
-
-Controller → Reçoit les requêtes HTTP
-Service → Contient la logique métier
-Repository → Accède à la base de données
-Entity → Représente une table dans la base de données

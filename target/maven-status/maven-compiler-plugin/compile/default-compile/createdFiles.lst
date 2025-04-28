@@ -1,4 +1,3 @@
-application.properties
 com/paykko/kyc/KycApplication.class
 com/paykko/kyc/model/dto/KycStatusDTO.class
 com/paykko/kyc/model/KycStatus.class

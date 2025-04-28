@@ -1,13 +1,15 @@
+
 package com.paykko.kyc.services;
 
-import com.amazonaws.services.s3.AmazonS3;
+import com.paykko.kyc.common.exception.KycNotFoundException;
 import com.paykko.kyc.model.KycStatus;
+import com.paykko.kyc.model.KycVerificationResult;
+import com.paykko.kyc.model.dto.KycSubmissionDTO;
 import com.paykko.kyc.model.dto.KycStatusDTO;
 import com.paykko.kyc.model.enums.Status;
 import com.paykko.kyc.repository.KycStatusRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -16,80 +18,77 @@ import java.util.Date;
 public class KycService {
 
     private final KycStatusRepository kycStatusRepository;
-    private final AmazonS3 amazonS3;
-    private static final String BUCKET_NAME = "kyc-uploads-bucket";
+    private final AWSRekognitionService rekognitionService;
+    private final AWSTextractService textractService;
 
-    public KycService() {
-        this.kycStatusRepository = null;
-        this.amazonS3 = null;
-    }
+    private static final double FACIAL_MATCH_THRESHOLD = 90.0;
 
-    /**
-     * Soumet des documents pour vérification KYC
-     */
-    public KycStatusDTO submitKycDocuments(String memberId, MultipartFile photoId, MultipartFile selfie) {
-        try {
-            // Upload vers S3
-            uploadToS3(memberId, photoId, "photo_id.jpg");
-            uploadToS3(memberId, selfie, "selfie.jpg");
+    public KycStatusDTO submitKyc(KycSubmissionDTO submission) {
+        // 1. Vérifier si un KYC existe déjà
+        KycStatus existingStatus = kycStatusRepository.findById(submission.getMemberId())
+                .orElse(new KycStatus(submission.getMemberId()));
 
-            // Créer ou mettre à jour le statut KYC
-            KycStatus kycStatus = kycStatusRepository.findById(memberId)
-                    .map(status -> {
-                        status.setStatus(Status.PENDING);
-                        status.setUpdatedAt(new Date());
-                        status.setNumberOfChecks(status.getNumberOfChecks() + 1);
-                        return status;
-                    })
-                    .orElse(new KycStatus(memberId));
-
-            kycStatus = kycStatusRepository.save(kycStatus);
-            return convertToDTO(kycStatus);
-
-        } catch (Exception e) {
-            throw new RuntimeException("Erreur lors de la soumission des documents KYC: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Récupère le statut KYC d'un membre
-     */
-    public KycStatusDTO getKycStatus(String memberId) {
-        KycStatus status = kycStatusRepository.findById(memberId)
-                .orElseThrow(() -> new RuntimeException("Statut KYC non trouvé pour le membre: " + memberId));
-        return convertToDTO(status);
-    }
-
-    /**
-     * Met à jour le statut KYC (utilisé par Lambda)
-     */
-    public KycStatusDTO updateKycStatus(String memberId, Status newStatus, String reason) {
-        KycStatus status = kycStatusRepository.findById(memberId)
-                .orElseThrow(() -> new RuntimeException("Statut KYC non trouvé pour le membre: " + memberId));
-
-        status.setStatus(newStatus);
-        status.setReason(reason);
-        status.setUpdatedAt(new Date());
-
-        status = kycStatusRepository.save(status);
-        return convertToDTO(status);
-    }
-
-    @SuppressWarnings("UseSpecificCatch")
-    private void uploadToS3(String memberId, MultipartFile file, String fileName) {
-        try {
-            String key = String.format("%s/%s", memberId, fileName);
-            amazonS3.putObject(BUCKET_NAME, key, file.getInputStream(), null);
-        } catch (Exception e) {
-            throw new RuntimeException("Erreur lors de l'upload vers S3: " + e.getMessage());
-        }
-    }
-
-    private KycStatusDTO convertToDTO(KycStatus status) {
-        return new KycStatusDTO(
-                status.getMemberId(),
-                status.getStatus(),
-                status.getReason()
+        // 2. Comparaison des visages avec Rekognition
+        double facialMatchScore = rekognitionService.compareFaces(
+                submission.getPhotoIdUrl(),
+                submission.getPhotoSelfieUrl()
         );
+
+        // 3. Extraction du texte avec Textract
+        KycVerificationResult verificationResult = textractService.extractAndVerifyData(
+                submission.getPhotoIdUrl(),
+                submission
+        );
+
+        // 4. Évaluation des résultats
+        Status newStatus = evaluateResults(facialMatchScore, verificationResult);
+        String reason = generateReason(facialMatchScore, verificationResult);
+
+        // 5. Mise à jour du statut
+        existingStatus.setStatus(newStatus);
+        existingStatus.setReason(reason);
+        existingStatus.setUpdatedAt(new Date());
+        existingStatus.setNumberOfChecks(existingStatus.getNumberOfChecks() + 1);
+
+        // 6. Sauvegarde en base de données
+        KycStatus savedStatus = kycStatusRepository.save(existingStatus);
+
+        // 7. Retour du DTO
+        return new KycStatusDTO(
+                savedStatus.getMemberId(),
+                savedStatus.getStatus(),
+                savedStatus.getReason()
+        );
+    }
+
+    public KycStatusDTO getKycStatus(String memberId) {
+        return kycStatusRepository.findById(memberId)
+                .map(status -> new KycStatusDTO(
+                        status.getMemberId(),
+                        status.getStatus(),
+                        status.getReason()
+                ))
+                .orElseThrow(() -> new KycNotFoundException("KYC not found for member: " + memberId));
+    }
+
+    private Status evaluateResults(double facialMatchScore, KycVerificationResult verificationResult) {
+        if (facialMatchScore < FACIAL_MATCH_THRESHOLD || !verificationResult.isTextualDataMatch()) {
+            return Status.REJECTED;
+        }
+        return Status.VALIDATED;
+    }
+
+    private String generateReason(double facialMatchScore, KycVerificationResult verificationResult) {
+        StringBuilder reason = new StringBuilder();
+
+        if (facialMatchScore < FACIAL_MATCH_THRESHOLD) {
+            reason.append("La correspondance faciale est insuffisante. ");
+        }
+
+        if (!verificationResult.isTextualDataMatch()) {
+            reason.append("Les données extraites ne correspondent pas aux données déclarées. ");
+        }
+
+        return !reason.isEmpty() ? reason.toString().trim() : "Vérification réussie";
     }
 }

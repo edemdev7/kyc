@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AIAssistantCustomInstructionsStorage">
+    <option name="instructions">
+      <map>
+        <entry key="AIAssistant.General.ProjectPrompt">
+          <value>
+            <AIAssistantStoredInstruction>
+              <option name="actionId" value="AIAssistant.General.ProjectPrompt" />
+              <option name="content" value="Adapte ce package à AWS SDK 2x" />
+            </AIAssistantStoredInstruction>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7b5f389-5409-41c9-8d96-25ea0e07f4e9" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plan.md" beforeDir="false" afterPath="$PROJECT_DIR$/plan.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/KycService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/KycService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/KycApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/KycApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/KycStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/KycStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/dto/KycStatusDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/dto/KycStatusDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/enums/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/model/enums/Status.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/repository/KycStatusRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/repository/KycStatusRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/services/KycService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/services/KycService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paykko/kyc/web/controller/DiagnosticController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paykko/kyc/web/controller/DiagnosticController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/paykko/kyc/KycApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/paykko/kyc/KycApplicationTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +43,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -41,20 +67,23 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2wB3FXowTbZpakWOKzM2rtAIt2c" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/edemdev/Gara/paykko-kyc",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/edemdev/Gara/paykko-kyc&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.AIAssistantPromptsLibrary&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="paykko-kyc" />
@@ -109,16 +138,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/paykko/kyc/services/KycService.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
