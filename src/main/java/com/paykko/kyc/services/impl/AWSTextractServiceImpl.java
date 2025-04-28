@@ -16,6 +16,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * Service implementation for AWS Textract to handle document text extraction
+ * and KYC (Know Your Customer) data verification.
+ * This class interacts with AWS Textract to analyze document images provided
+ * in Amazon S3 and compares extracted data with user-submitted KYC information.
+ */
 @Service
 @RequiredArgsConstructor
 public class AWSTextractServiceImpl implements AWSTextractService {

@@ -9,6 +9,21 @@ import software.amazon.awssdk.services.rekognition.model.*;
 
 import java.util.List;
 
+/**
+ * Implementation of AWSRekognitionService to interact with AWS Rekognition for comparing faces.
+ * This service uses the AWS Rekognition SDK to compare two images stored in Amazon S3 and
+ * calculates the similarity score between the faces present in those images.
+ *
+ * The compareFaces method takes two image URLs as inputs, extracts the S3 bucket and key
+ * information from the URLs, and sends a CompareFacesRequest to the AWS Rekognition service.
+ * It processes the response to determine the highest similarity score among detected matches.
+ *
+ * Dependencies:
+ * - RekognitionClient: The AWS SDK client used for communicating with AWS Rekognition.
+ *
+ * Exceptions:
+ * - Throws KycVerificationException in case of an error during the process.
+ */
 @Service
 @RequiredArgsConstructor
 public class AWSRekognitionServiceImpl implements AWSRekognitionService {
